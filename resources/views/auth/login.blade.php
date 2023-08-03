@@ -50,7 +50,7 @@
                                             @enderror
                                 </div>
 
-                                <a href="#" class="float-right">Forgot password?</a>
+                                <!-- <a href="#" class="float-right">Forgot password?</a> -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-0" 
@@ -64,11 +64,11 @@
                                 </div>
 
                                 <div class="d-inline-block w-100">
-                                    <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
+                                    <!-- <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Remember Me</label>
                                         
-                                    </div>
+                                    </div> -->
                                     <button type="submit" class="btn btn-primary float-right">Sign in</button>
                                 </div>
                                 
@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-sm-6 text-center">
                         <div class="sign-in-detail text-white" style="background: url('sofbox-dashboard-lite/html/images/login/2.jpg') no-repeat 0 0; background-size: cover;">
-                            <a class="sign-in-logo mb-5" href="#"><img src="{{asset('sofbox-dashboard-lite/html/images/logo-full2.png')}}" class="img-fluid" alt="logo"></a>
+                            <a class="sign-in-logo mb-5" href="#"></a>
                             <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
                                 <div class="item">
                                     <img src="{{asset('sofbox-dashboard-lite/html/images/login/1.png')}}" class="img-fluid mb-4" alt="logo">

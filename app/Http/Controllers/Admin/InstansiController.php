@@ -14,16 +14,17 @@ class InstansiController extends Controller
     public function index(Request $request)
     {
         // dd($request);
-        $search = $request->query('search');
+        // $search = $request->query('search');
 
-        if(!empty($search)){
-            $instansis = Instansi::where('instansis.instansi_name','LIKE', '%' .$search. '%')
-            ->paginate(5);
-        }else{
-            $instansis = Instansi::latest()->paginate(5);
-        }
+        // if(!empty($search)){
+        //     $instansis = Instansi::where('instansis.instansi_name','LIKE', '%' .$search. '%')
+        //     ->paginate(5);
+        // }else{
+        //     $instansis = Instansi::latest()->paginate(5);
+        // }
+        $instansis = Instansi::all();
         
-        return view('admin.instansi.index', ['instansis'=> $instansis],['search'=> $search]);
+        return view('admin.instansi.index', compact('instansis'));
 
     }
 
@@ -86,6 +87,6 @@ class InstansiController extends Controller
     {
         $instansi = Instansi::find($id);
         $instansi->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'The Instansi success deleted');
     }
 }

@@ -20,23 +20,24 @@ class ProgrammerController extends Controller
         $tasks = Task::where('user_id',auth()->user()->id)->get();
         $progress = Historytask::where('user_id',auth()->user()->id)->get();
         $pending = $progress->where('status', 'PENDING')->count();
-        $on_progress = $progress->where('status', 'ON PROGRESS')->count();
-        $verification = $progress->where('status', 'VERIFICATION')->count();
+        $done = $progress->where('status', 'DONE')->count();
+        $verification = $progress->where('status', 'VERIFIED')->count();
         $notifications = Auth::user()->unreadNotifications;
         // $notifications = Notification::all();
+        // return view('programmer.dashboard', compact('tasks','notifications'));
 
-        return view('programmer.dashboard', compact('tasks', 'on_progress', 'pending', 'verification', 'notifications'));
+        return view('programmer.dashboard', compact('tasks', 'done', 'pending', 'verification', 'notifications'));
     }
 
-    public function indexNotif()
-    {
-        $user = Auth::user();
+    // public function indexNotif()
+    // {
+    //     $user = Auth::user();
 
        
-            $notifications = $user->unreadNotifications;
+    //         $notifications = $user->unreadNotifications;
 
-        return view('programmer.dashboard1', compact('notifications'));
-    }
+    //     return view('programmer.dashboard1', compact('notifications'));
+    // }
 
 
     public function markAsRead(){
@@ -44,7 +45,7 @@ class ProgrammerController extends Controller
         foreach($user->unreadNotifications as $notification){
             $notification->markAsRead();
         }
-        return response()->noContent();
+        return redirect()->back();
     }
     
     

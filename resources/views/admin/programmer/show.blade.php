@@ -36,7 +36,7 @@
                            </div>
                         <div class="iq-card-body">
                            <div class="table-responsive">
-                              <table class="table table-bordered table-responsive-md table-striped text-center">
+                              <table id="example" class="table table-bordered table-responsive-md table-striped text-center">
                                  <thead>
                                     <tr>
                                     <th scope="col">No</th>

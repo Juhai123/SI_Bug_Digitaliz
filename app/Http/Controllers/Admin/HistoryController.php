@@ -62,6 +62,8 @@ class HistoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $log = Activity::find($id);
+        $log->delete();
+        return redirect()->back();
     }
 }

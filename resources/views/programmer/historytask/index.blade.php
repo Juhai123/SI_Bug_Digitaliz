@@ -56,13 +56,14 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$task->bug->name}}</td>
                                             <td>
-                                            @if ($task->status == 'PENDING')
+                                            
+                                    @if ($task->status == 'PENDING')
                                         <div class="badge badge-pill badge-warning">Pending</div>
-                                    @elseif($task->status == 'ON PROGRESS')
-                                        <div class="badge badge-pill badge-primary">On Progress</div>
+                                    @elseif($task->status == 'REVISION')
+                                        <div class="badge badge-pill badge-secondary">Revision</div>
                                     @elseif($task->status == 'DONE')
                                         <div class="badge badge-pill badge-info">Done</div>
-                                    @elseif($task->status == 'VERIFICATION')
+                                    @elseif($task->status == 'VERIFIED')
                                         <div class="badge badge-pill badge-success">Verification</div>
                                     @endif
                                             </td>

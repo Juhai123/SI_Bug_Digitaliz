@@ -18,9 +18,9 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->enum('status',
             ['PENDING',
-            'ON PROGRESS', 
-            'DONE',
-            'VERIFICATION'])->nullable();
+            'DONE', 
+            'REVISION', 
+            'VERIFIED'])->nullable();
             $table->text('information')->nullable();
             
             //relation

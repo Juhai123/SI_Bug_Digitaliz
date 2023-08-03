@@ -59,13 +59,14 @@
                                     <td scope="row">
                                     @if($task->status == "PENDING")
                                     <span class="badge bg-secondary">{{$task->status}}</span>
-                                    @elseif($task->status == "WAITING APPROVAL")
+                                    @elseif($task->status == "DONE")
                                     <span class="badge bg-primary">{{$task->status}}</span>
                                     @elseif($task->status == "APPROVED")
                                     <span class="badge bg-success">{{$task->status}}</span>
                                     @elseif($task->status == "REJECTED")
                                     <span class="badge bg-danger">{{$task->status}}</span>
                                     @endif
+                                    
                                     </td>
                                     <td scope="row">
                                       <!-- Modal -->

@@ -21,22 +21,11 @@ class TaskProgrammer extends Controller
     {
         $filterKeyword = $request->get('user_id');
         $bug = Bug::all();
-        $historytask = Historytask::all();
         $query = Task::query();
         $tasks = Task::where('user_id',auth()->user()->id)->latest()->get();
 
-        // $bug = DB::table('bugs')
-        // ->join('historytask','historytask.status', '=', 'bugs.status')
-        // ->get();
-
-        // $historytask = DB::table('historytasks')
-        // ->get();
-
-
-        $url = route('programmer.historytask.store');
-      
         return view ('programmer.task.index' ,
-        compact('tasks' , 'bug', 'url'));
+        compact('tasks' , 'bug'));
     }
 
     /**
@@ -72,8 +61,7 @@ class TaskProgrammer extends Controller
     {
         $tasks = Task::findOrFail($id);
         $bug = $tasks->bug; 
-        $url = route('programmer.historytask.store');
-        return view('programmer.task.show',['bug' => $bug , 'tasks' => $tasks], compact('url'));
+        return view('programmer.task.show',['bug' => $bug , 'tasks' => $tasks]);
     }
 
     /**
@@ -110,8 +98,8 @@ class TaskProgrammer extends Controller
        
     
      $tasks = Bug::findOrFail($id);
-     $users = User::find(1);
-     Notification::send($users, new TaskNotification($task));
+    //  $users = User::find(1);
+    //  Notification::send($users, new TaskNotification($task));
      $tasks->update($data);
 
     return redirect()->route('programmer.historytask.index');
@@ -156,6 +144,7 @@ class TaskProgrammer extends Controller
         $tasks = Task::findOrFail($id);
         $tasks->delete();
         return redirect()->route('programmer.task.index');
+
     }
 
     

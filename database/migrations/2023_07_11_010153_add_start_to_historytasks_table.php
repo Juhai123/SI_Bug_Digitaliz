@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->enum('status',
-            ['PENDING',
-            'DONE', 
-            'REVISI', 
-            'VERIFIED'])->nullable();
+        Schema::table('historytasks', function (Blueprint $table) {
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
             
         });
     }
@@ -26,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('historytasks', function (Blueprint $table) {
+            $table->dropColumn('start', 'end');
         });
     }
 };

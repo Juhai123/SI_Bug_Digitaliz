@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
+use App\Models\Historytask;
 use App\Models\Task;
 use App\Models\User;
 use App\Notifications\BugNotification;
@@ -76,7 +77,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        // $historytask->bug_id = $request->get('bug_id');
+        // $historytask->task_id = $request->get('task_id');
+        // $historytask->user_id = $request->get('user_id');
+        $task->status = 'VERIFIED';
+        $task->save();
+        // dd($task);
+        return redirect()->back();
     }
 
     /**
@@ -87,5 +95,18 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->delete();
         return redirect()->back()->with('success', 'Task di delete');
+    }
+
+    public function updateVerification(Request $request, $id)
+    {
+        // dd($request);
+        
+        $task = Historytask::findOrFail($id);
+        // $historytask->bug_id = $request->get('bug_id');
+        // $historytask->task_id = $request->get('task_id');
+        // $historytask->user_id = $request->get('user_id');
+        $task->status = 'VERIFICATION';
+        $task->save();
+        return redirect()->route('admin.bug.show');
     }
 }

@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="navbar-breadcrumb">
-                  <h5 class="mb-0">Bugs Walking</h5>
+                  <h5 class="mb-0">Task Walking</h5>
                   <nav aria-label="breadcrumb">
                      <ul class="breadcrumb">
                         <li class="breadcrumb-item">Home</li>
-                        <li class="breadcrumb-item active" aria-current="page">Bugs Walking</li>
+                        <li class="breadcrumb-item active" aria-current="page">Task Walking</li>
                      </ul>
                   </nav>
                </div>
@@ -20,7 +20,7 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Data Bugs Walking</h4>
+                              <h4 class="card-title">Data Task Walking</h4>
                            </div>
                            
                         </div>
@@ -66,12 +66,12 @@
                               <table id="example" class="table table-responsive-md table-striped text-center mt-4">
                                  <thead>
                                     <tr>
-                                       <th scope="col">No</th>
-                                       <th scope="col">Bug Name</th>
-                                       <th scope="col">Status</th>
-                                       <th scope="col">Start</th>
-                                       <th scope="col">End</th>
-                                       <th scope="col">Action</th>
+                                       <th class="text-center">No</th>
+                                       <th class="text-center">Bug Name</th>
+                                       <th class="text-center">Status</th>
+                                       <th class="text-center">Start</th>
+                                       <th class="text-center">End</th>
+                                       <th class="text-center">Action</th>
                                     </tr>
                                  </thead>
                                  @foreach($historytasks as $historytask)
@@ -81,11 +81,11 @@
                                  <td>
                                  @if ($historytask->status == 'PENDING')
                                         <div class="badge badge-pill badge-warning">Pending</div>
-                                    @elseif($historytask->status == 'ON PROGRESS')
-                                        <div class="badge badge-pill badge-primary">On Progress</div>
+                                    @elseif($historytask->status == 'REVISION')
+                                        <div class="badge badge-pill badge-secondary">Revision</div>
                                     @elseif($historytask->status == 'DONE')
                                         <div class="badge badge-pill badge-info">Done</div>
-                                    @elseif($historytask->status == 'VERIFICATION')
+                                    @elseif($historytask->status == 'VERIFIED')
                                         <div class="badge badge-pill badge-success">Verification</div>
                                     @endif
                                  </td>

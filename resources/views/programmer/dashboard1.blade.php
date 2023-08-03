@@ -26,7 +26,7 @@ $notifications = Auth::user()->unreadNotifications;
                                           </div>
                                           <div class="media-body ml-1">
                                              <h6 class="mb-0 ">{{ $notification->data['title'] }}</h6>
-                                             <small class="float-right font-size-11"><b>{{ $notification->created_at->format('H')}} hour ago</b></small>
+                                             <small class="float-right font-size-11"><b>{{ $notification->created_at->diffForHumans()}}</b></small>
                                              <small class="font-size-10 mb-0">You have task new, please check now. {{ $notification->data['message'] }} : {{ $notification->data['0'] }}</small>
                                           </div>
                                           

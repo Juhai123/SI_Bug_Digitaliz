@@ -23,20 +23,7 @@
                            <div class="iq-header-title">
                               <h4 class="card-title">Data Task</h4>
                            </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle text-primary" id="dropdownMenuButton5" data-toggle="dropdown">
-                                 <i class="ri-more-2-fill"></i>
-                                 </span>
-                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-pencil-fill mr-2"></i>Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-printer-fill mr-2"></i>Print</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-file-download-fill mr-2"></i>Download</a>
-                                 </div>
-                              </div>
-                           </div>
+                           
                         </div>
                         <div class="iq-card-body">
                            <div class="table-responsive">
@@ -83,7 +70,7 @@
                                
                                     <a name="lihat" id="showButton" class="btn btn-primary"
                                         href="{{ route('programmer.task.show', $task->id) }}" role="button"><i class="fa fa-eye"></i>Ambil</a>
-                                       
+                                    
                                         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" 
                                 data-target="#exampleModal-{{ $task->id }}"><i class="fa fa-eye mr-2"></i>
                            Ambil
@@ -99,43 +86,12 @@
                                        </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="{{ route('programmer.historytask.store', $task->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            
-                            <input type="hidden" name="id" value="{{ $task->id }}">
-                            <input type="hidden" name="bug_id" value="{{ $task->bug_id }}">
-                            <input type="hidden" name="task_id" value="{{ $task->id }}">
-                            <input type="hidden" name="user_id" value="{{ $task->user_id }}">
-                            <input type="hidden" name="status" value="{{ $task->status }}">
-                            <div class="form-group">
-                                <div class="text-left">
-                                <label for="">Bug Name : </label>
-                                {{ $task->bug->name }}
-                                <input hidden type="text" name="name" value="{{ $task->bug->name }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="text-left">
-                                <label for="">Status : </label>
-                                
-                                <select hidden name="status" class="form-control" id="" value="{{$task->bug->status ?? ''}}">
-                                 <option value="" >Select Status</option>
-                                  <option value="pending">PENDING</option>
-                                  <option value="on progress">ON PROGRESS</option>
-                                  <option value="done">DONE</option>
-                                  <option value="verification">VERIFICATION</option>
-                              </select>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary mt-3">Ambil Task</button>
-                            </div>
-                                    </form>
+                                    
                                     </div>
                                     
                                  </div>
                               </div>
-                           </div> --> 
+                           </div>  -->
                            <!-- end edit -->
                            
                                      
@@ -153,7 +109,7 @@
                 -->
                                            <!-- Button trigger modal -->
                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter-{{ $task->id }}">
-                           <i class="ri-delete-bin-6-fill mr-2"></i>Delete
+                           <i class="ri-delete-bin-6-fill mr-2"></i>Tolak
                            </button>
                            <!-- Modal -->
                            <div class="modal fade" id="exampleModalCenter-{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

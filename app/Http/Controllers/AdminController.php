@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bug;
+use App\Models\Historytask;
 use App\Models\Instansi;
 use App\Models\Project;
 use App\Models\Task;
@@ -22,8 +23,16 @@ class AdminController extends Controller
         $task = Task::all();
         $instansi = Instansi::all();
         $user = User::all();
+        $task_walk = Historytask::all();
         // $notifications = Auth::user()->unreadNotifications;
-        return view('admin.dashboard', compact('programmers','bugs', 'project', 'task','instansi',
+        return view('admin.dashboard', compact('programmers','bugs', 'project', 'task','instansi','task_walk',
          'user'))->with('message', 'Hallo selamat datang');
+    }
+    public function markAsRead(){
+        $user = User::find(auth()->user()->id);
+        foreach($user->unreadNotifications as $notification){
+            $notification->markAsRead();
+        }
+        return redirect()->back();
     }
 }

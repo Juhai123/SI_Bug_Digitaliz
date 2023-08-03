@@ -59,6 +59,8 @@
                         <i class="fa fa-history"></i><span>History Task</span></a>
                      </li> <!-- End History Task -->
 
+                    
+
                   </ul>
                </nav>
                <div class="p-3"></div>

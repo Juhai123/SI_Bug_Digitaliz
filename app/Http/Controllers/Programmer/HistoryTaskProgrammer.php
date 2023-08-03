@@ -7,6 +7,7 @@ use App\Models\Bug;
 use App\Models\Historytask;
 use App\Models\Task;
 use App\Models\User;
+use App\Notifications\TaskDoneNotification;
 use App\Notifications\TaskNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,9 +66,12 @@ class HistoryTaskProgrammer extends Controller
         $task->user_id = $request->input('user_id');
         $task->information = $request->input('information');
         $task->status = 'PENDING';
+        $task->start = now();
     
         $task->save();
         // $task->create();
+        $users = User::find(3);
+        Notification::send($users, new TaskNotification($task));
         
         return redirect()->route('programmer.historytask.index');
 
@@ -110,16 +114,17 @@ class HistoryTaskProgrammer extends Controller
         // dd($request);
         $task = Historytask::findOrFail($id);
         $task->bug_id = $request->get('bug_id');
-        $task->task_id = $request->get('task_id');
+        // $task->task_id = $request->get('task_id');
         $task->user_id = $request->get('user_id');
         $task->information = $request->get('information');
         $task->status = $request->get('status');
-        $task->progress = $request->get('status');
-        $task->end = $request->get('end');
+        // $task->progress = $request->get('progress');
+        $task->end = now();
 
         if ($task->status= 'DONE') {
             $task->end= now();
-            $task->progress = 100;
+            $users = User::find(3);
+            Notification::send($users, new TaskDoneNotification($task));
         }
         // $task = Historytask::find($id);
         $task->save();

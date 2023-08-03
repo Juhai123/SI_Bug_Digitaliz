@@ -55,8 +55,8 @@
                            <a name="" id="" href="{{ route('programmer.historytask.index') }}">
                            <i class="fa fa-spinner" aria-hidden="true"></i></a>
                               </div>
-                           <span class="float-left line-height-2">Task Progress
-                              <h2 class="text-white text-left"><span class="counter">{{$on_progress}}</span></h2>
+                           <span class="float-left line-height-2">Task Done
+                              <h2 class="text-white text-left"><span class="counter">{{$done}}</span></h2>
                            </span>
                               </div>
                         </div>
@@ -77,8 +77,26 @@
                         </div>
                      </div>
                      </div>
+                    
+                    
                </div>
-            </div>
+               <!-- <div class="row">
+                     <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden bg-cobalt-blue">
+                        <div class="iq-card-body pb-0">
+                              <div class="text-right mb-4">
+                           <div class="rounded-circle iq-card-icon iq-bg-primary">
+                           <a name="" id="" href="{{ route('programmer.historytask.index') }}">
+                           <i class="fa fa-check-circle-o"></i></a>
+                           </div>
+                           <span class="float-left line-height-2">Task Verification
+                              <h2 class="text-white text-left"><span class="counter">{{$verification}}</span></h2>
+                           </span>
+                              </div>
+                        </div>
+                     </div>
+                     </div>
+            </div> -->
         </div>
         @endsection
 

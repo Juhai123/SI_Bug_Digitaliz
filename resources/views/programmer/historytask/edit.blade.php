@@ -30,6 +30,14 @@
         @endif
         <button type="submit" class="btn btn-primary">Update</button>
     </form> -->
+    <!-- <div class="form-group">
+        <label for="status">Status Bug</label>
+        <select name="status" id="status" class="form-control">
+            <option value="pending" {{ $task->bug->status == 'PENDING' ? 'selected' : '' }}>Pending</option>
+            <option value="done" {{ $task->bug->status == 'DONE' ? 'selected' : '' }}>Done</option>
+        </select>
+    </div> -->
+
     <form action="{{ route('programmer.historytask.update', $task->id) }}" method="POST" id="taskForm">
     @csrf
     @if (@$task)
@@ -38,8 +46,8 @@
     <div class="form-group">
         <label for="status">Status Bug</label>
         <select name="status" id="status" class="form-control">
-            <option value="pending" {{ $task->bug->status == 'PENDING' ? 'selected' : '' }}>Pending</option>
-            <option value="done" {{ $task->bug->status == 'DONE' ? 'selected' : '' }}>Done</option>
+            <option value="pending">Pending</option>
+            <option value="done">Done</option>
         </select>
     </div>
     <div class="form-group">
@@ -53,7 +61,7 @@
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     var statusSelect = document.getElementById('status');
     var informationField = document.getElementById('informationField');
@@ -65,6 +73,6 @@
             informationField.style.display = 'none';
         }
     });
-</script>
+</script> -->
 
 @endsection

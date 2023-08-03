@@ -68,17 +68,32 @@
                                     <td>{{ $tasks->end }} </td>
                                 </tr>
                                 <tr>
-                                <form action="{{ route('programmer.historytask.store', $tasks->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                            <input type="hidden" name="id" value="{{ $tasks->id }}">
-                            <input type="hidden" name="bug_id" value="{{ $tasks->bug_id }}">
-                            <input type="hidden" name="task_id" value="{{ $tasks->id }}">
-                            <input type="hidden" name="user_id" value="{{ $tasks->user_id }}">
-                            <input type="hidden" name="status" value="{{ $tasks->status }}">
-                                  <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Ambil Task</button>
-                              </div>
-                           </form>
+                                <form action="{{ route('programmer.historytask.store', $tasks->id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" name="id" value="{{ $tasks->id }}">
+    <input type="hidden" name="bug_id" value="{{ $tasks->bug_id }}">
+    <input type="hidden" name="task_id" value="{{ $tasks->id }}">
+    <input type="hidden" name="user_id" value="{{ $tasks->user_id }}">
+    <input type="hidden" name="status" value="{{ $tasks->status }}">
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Ambil Task</button>
+    </div>
+</form>
+
+<!-- <form action="{{ route('programmer.coba.show', $tasks->id ) }}" method="post" enctype="multipart/form-data">
+@csrf
+                    
+    <input type="hidden" name="id" value="{{ $tasks->id }}">
+    <input type="hidden" name="bug_id" value="{{ $tasks->bug_id }}">
+    <input type="hidden" name="task_id" value="{{ $tasks->id }}">
+    <input type="hidden" name="user_id" value="{{ $tasks->user_id }}">
+    <input type="hidden" name="status" value="{{ $tasks->status }}">
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Ambil Task</button>
+    </div>
+</form> -->
+
+
 
                                 </tr>
                                 

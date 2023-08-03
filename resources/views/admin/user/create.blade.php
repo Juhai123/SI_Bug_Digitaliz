@@ -81,10 +81,10 @@
                                   </select>
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                <label class="" for="">File</label>
+                                <label class="" for="">Image</label>
                               <div class="custom-file ">
                                     <input type="file" class="custom-file-input" name="image" id="image" value="{{ $user->image ?? '' }}">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <label class="custom-file-label" for="customFile">Choose File</label>
                                  </div>
                               </div>
                               </div>

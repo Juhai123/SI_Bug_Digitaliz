@@ -67,14 +67,7 @@
                            <div class="row justify-content-between">
                         <div class="col-sm-6 col-md-3">
                         <div class="iq-todo-page">
-                           <form method="GET" class="position-relative">
-                              <div class="form-group mb-0">
-                                 <input type="search" name="search" class="form-control todo-search" 
-                                 id="exampleInputEmail002"  placeholder="Search" autofocus value="{{$search}}">
-                                 <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                              </div>
-                           </form>
-                           
+                          
                         </div>
                         </div>
                         <div class="iq-card-header-toolbar d-flex align-items-center">
@@ -120,12 +113,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                                    @php
-                                    $nomor = 1 + (($instansis->currentPage() - 1) * $instansis->perPage());
-                                    @endphp
+                                 
                             @foreach ($instansis as $instansi)
                             <tr>
-                                <td>{{ $nomor++ }}</td>
+                                <td>{{ $loop->iteration}}</td>
                                 <td>{{ $instansi->instansi_name }}</td>
                                 <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" 
@@ -205,7 +196,7 @@
                                @endforeach
                            </tbody>
                        </table>
-                       {{$instansis->links()}}
+                     
                    </div>
                </div>
                         </div>
@@ -223,6 +214,22 @@
                            <div class="row">
                               <div class="col-sm-12">
                               <div class="table-responsive">
+                              @if($message = Session::get('message'))
+                           <br>
+                           <div class="col-md-12 col-md-1 col-mb-0">
+                           <div class="alert alert-success" role="alert">
+            <div class="iq-alert-icon ">
+            <i class="icon" data-icon="S"></i>
+                              </div>
+                <div class="iq-alert-text"><a class="alert-link">Success</a>
+                <p class="text-secondary mb-0">{{$message}}</p></div>
+                              <button type="button" class="btn btn-light" data-dismiss="alert" aria-label="Close">
+                              <i class="ri-close-line"></i>
+                              </button>
+
+            </div>
+                           </div>
+            @endif
                               <table id="example" class="table table-responsive-md table-striped text-center">
                                  <thead>
                                     <tr>
@@ -232,12 +239,10 @@
                                     </tr>
                                     
                                     <tbody>
-                                    @php
-                                    $nomor = 1 + (($instansis->currentPage() - 1) * $instansis->perPage());
-                                    @endphp
+                                    
                                     @foreach($instansis as $instansi)
                                     <tr>
-                                       <td>{{$nomor++}}</td>
+                                       <td>{{$loop->iteration}}</td>
                                        <td>{{ $instansi->instansi_name }}</td>
                                      <td>
                                      <button type="button" class="btn btn-success" data-toggle="modal" 
@@ -318,7 +323,7 @@
                                    
                                  </thead>
                               </table>
-                              {{$instansis->links()}}
+                             
                               </div>
                               </div>
                            </div>

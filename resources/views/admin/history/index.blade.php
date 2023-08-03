@@ -22,30 +22,18 @@
                            <div class="iq-header-title">
                               <h4 class="card-title">History User</h4>
                            </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle text-primary" id="dropdownMenuButton5" data-toggle="dropdown">
-                                 <i class="ri-more-2-fill"></i>
-                                 </span>
-                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-pencil-fill mr-2"></i>Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-printer-fill mr-2"></i>Print</a>
-                                    <a class="dropdown-item" href="#"><i class="ri-file-download-fill mr-2"></i>Download</a>
-                                 </div>
-                              </div>
-                           </div>
+                          
                         </div>
                         <div class="iq-card-body">
                            <div class="table-responsive">
                               <table class="table table-responsive-md table-striped text-center">
                                  <thead>
                                     <tr>
-                                       <th scope="col">No</th>
-                                       <th scope="col">Date</th>
-                                       <th scope="col">User</th>
-                                       <th scope="col">Activity</th>
+                                       <th class="text-center">No</th>
+                                       <th class="text-center">Date</th>
+                                       <th class="text-center">User</th>
+                                       <th class="text-center">Activity</th>
+                                       <th class="text-center">Action</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -55,6 +43,41 @@
                                     <td>{{$log->created_at}}</td>
                                     <td>{{$log->causer->name}}</td>
                                     <td>{{$log->description}}</td>
+                                    <td>
+                                         <!-- Button trigger modal -->
+                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter-{{ $log->id }}">
+                           <i class="ri-delete-bin-6-fill mr-2"></i>Delete
+                           </button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModalCenter-{{ $log->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h6 class="modal-title"><b>Are you sure delete this table?</b></h6>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                       </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <span>All data will be lose</span>
+                    </div>
+                    <div class="modal-footer">
+                    <form class="d-inline" action="{{ route('admin.history.destroy', [$log->id]) }}" method="POST">
+
+                                        @csrf
+
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        
+                                    </form>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                                    </div>
+                                 </div>
+                              </div>
+                          </div>
+                                    </td>
                                   </tr>
                                   @endforeach
                                  </tbody>

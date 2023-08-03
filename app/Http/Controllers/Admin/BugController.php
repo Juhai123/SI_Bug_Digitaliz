@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
+use App\Models\Historytask;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
@@ -105,13 +106,14 @@ class BugController extends Controller
         $bug = Bug::findOrFail($id);
         $task = $bug->task; 
         $url = route('admin.task.store');
+      
         // $users = User::whereIn('role_id', [3])->get();
         $users = User::whereHas('roles' , function($q){
             $q->where('name', 'programmer'); })->get();
-       
-        // activity()->performedOn($bug)->log('Show Bug');
+            $historytasks = Historytask::all();
+        activity()->performedOn($bug)->log('Show Bug');
         // Notification::send($users, new BugNotification($task));
-        return view('admin.bug.show', ['bug' => $bug , 'task' => $task], compact('url', 'users'))
+        return view('admin.bug.show', ['bug' => $bug , 'task' => $task], compact('url', 'users', 'historytasks'))
         ->with('message', 'Programmer success created');
          
     }
@@ -123,6 +125,7 @@ class BugController extends Controller
     {
         $bug = Bug::findOrFail($id);
         $projects = Project::all();
+        activity()->performedOn($bug)->log('Edit Bug');
         return view('admin.bug.edit', compact('bug', 'projects'));
     }
 
@@ -145,6 +148,7 @@ class BugController extends Controller
     }
        $bug = Bug::find($id);
        $bug->update($data);
+       activity()->performedOn($bug)->log('Update Bug');
         return redirect()->route('admin.bug.index')->with('message', 'Report Bug success editing');
     }
 

@@ -139,15 +139,18 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $task->user->name}}</td>
-                                <td>{{ $task->start}}</td>
-                                <td>{{ $task->end}}</td>
+                                <td>{{ $task->historytask->pluck('status')->implode(', ') }}</td>
+                                <td>{{ $task->historytask->pluck('start')->implode(', ') }}</td>
+                                <td>{{ $task->historytask->pluck('end')->implode(', ') }}</td>
                                 <td>
+                                 
                                 <form method="POST" action="{{ route('admin.task.destroy', $task->id )}}" class="d-inline"  >
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="submit" value="Delete" class="btn btn-danger">
 
                 </form>
+               
                                 </td>
                                
                             </tr>

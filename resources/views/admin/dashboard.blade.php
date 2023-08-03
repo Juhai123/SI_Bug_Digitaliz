@@ -95,7 +95,23 @@
                      </div>
                      </div>
                </div>
+               
                      <div class="row">
+                     <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden bg-cobalt-blue">
+                        <div class="iq-card-body pb-0">
+                              <div class="text-right mb-4">
+                           <div class="rounded-circle iq-card-icon iq-bg-primary">
+                           <a name="" id="" href="{{ route('admin.bugs_walking.index') }}">
+                           <i class="ri-checkbox-multiple-fill" aria-hidden="true"></i></a>
+                           </div>
+                           <span class="float-left line-height-2">Task Walking
+                              <h2 class="text-white text-left"><span class="counter">{{count($task_walk)}}</span></h2>
+                           </span>
+                              </div>
+                        </div>
+                     </div>
+                     </div>
                      <div class="col-md-6 col-lg-3">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden bg-cobalt-blue">
                         <div class="iq-card-body pb-0">

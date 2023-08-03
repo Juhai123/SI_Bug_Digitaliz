@@ -14,7 +14,7 @@ class BugWlkingController extends Controller
      */
     public function index()
     {
-        $historytasks = Historytask::all();
+        $historytasks = Historytask::latest()->get();
         return view('admin.bugwalking.index', compact('historytasks'));
     }
 
@@ -56,7 +56,7 @@ class BugWlkingController extends Controller
     public function update(Request $request, string $id)
     {
         $historytask = Historytask::findOrFail($id);
-        $historytask->status = 'ON PROGRESS';
+        $historytask->status = 'REVISION';
         $historytask->save();
         return redirect()->route('admin.bugs_walking.index');
     }
@@ -75,7 +75,7 @@ class BugWlkingController extends Controller
         $historytask->bug_id = $request->get('bug_id');
         $historytask->task_id = $request->get('task_id');
         $historytask->user_id = $request->get('user_id');
-        $historytask->status = 'VERIFICATION';
+        $historytask->status = 'VERIFIED';
         $historytask->save();
         return redirect()->back();
     }

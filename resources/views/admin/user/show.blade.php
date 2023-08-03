@@ -54,7 +54,7 @@
                                 </tr>
                                 <tr>
                                     <th>Role</th>
-                                    <td>{{$users->role->name}}</td>
+                                    <td>{{$users->roles[0]->name}}</td>
                                 </tr>
                             </tbody>
                         </table>
