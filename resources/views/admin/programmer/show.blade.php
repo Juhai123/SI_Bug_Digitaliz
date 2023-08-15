@@ -39,10 +39,10 @@
                               <table id="example" class="table table-bordered table-responsive-md table-striped text-center">
                                  <thead>
                                     <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Bug Name</th>
-                                    <th scope="col">Project Name</th>
-                                    <th scope="col">Status</th>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Bug Name</th>
+                                    <th class="text-center">Project Name</th>
+                                    <th class="text-center">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,17 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $task->bug->name }}</td>
                                 <td>{{ $task->bug->project->project_name }}</td>
-                                <td>{{ $task->bug->status}}</td>
+                                <td>
+                                @if ($task->historytask->pluck('status')->implode(', ') == 'PENDING')
+                                        <div class="badge badge-pill badge-warning">Pending</div>
+                                    @elseif($task->historytask->pluck('status')->implode(', ') == 'REVISION')
+                                        <div class="badge badge-pill badge-secondary">Revision</div>
+                                    @elseif($task->historytask->pluck('status')->implode(', ') == 'DONE')
+                                        <div class="badge badge-pill badge-info">Done</div>
+                                    @elseif($task->historytask->pluck('status')->implode(', ') == 'VERIFIED')
+                                        <div class="badge badge-pill badge-success">Verification</div>
+                                    @endif
+                                </td>
                                
                                
                                 @endforeach

@@ -57,12 +57,12 @@
                               <table id="example" class="table table-responsive-md table-striped text-center mt-4">
                                  <thead>
                                     <tr>
-                                       <th scope="col">No</th>
-                                       <th scope="col">Project Name</th>
-                                       <th scope="col">Status</th>
-                                       <th scope="col">Description</th>
-                                       <th scope="col">Start Date</th>
-                                       <th scope="col">End Date</th>
+                                       <th class="text-center">No</th>
+                                       <th class="text-center">Project Name</th>
+                                       <th class="text-center">Status</th>
+                                       <th class="text-center">Description</th>
+                                       <th class="text-center">Start Date</th>
+                                       <th class="text-center">End Date</th>
                                     </tr>
                                  </thead>
                                  <tbody>
